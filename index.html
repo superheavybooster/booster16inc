@@ -7,99 +7,99 @@
   <link rel="icon" href="https://imgur.com/B6LcDKt.jpeg" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .hero-bg { background-size: cover; background-position: center; }
+    .hidden { display: none; }
+    .ratio-16x9 { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; }
+    .ratio-16x9 iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans leading-normal">
-  <!-- HERO -->
-  <header class="relative h-screen min-h-[520px] flex items-center justify-center">
-    <div class="absolute inset-0 hero-bg" id="hero" style="background-image: url('images/background.jpg')"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
-    <div class="relative z-10 max-w-5xl px-6 text-center">
-      <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg">STARSHIP'S SECOND FLIGHT TEST</h1>
-      <p class="mt-4 text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-        Starship Integrated Flight Test 2 is our second flight and we hope to see a full success this time around.  
-        Check <a href="#timeline" class="underline hover:text-white">Timeline</a> for the events of this flight, and  
-        <a href="#updates" class="underline hover:text-white">Updates</a> for the report of our previous flight.
-      </p>
-
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="#mission" class="px-5 py-3 rounded-2xl glass card">Mission Summary</a>
-        <a href="#timeline" class="px-5 py-3 rounded-2xl glass card">Timeline</a>
-        <a href="#gallery" class="px-5 py-3 rounded-2xl glass card">Gallery</a>
-        <a href="#updates" class="px-5 py-3 rounded-2xl glass card">Updates</a>
-      </div>
-
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
-        <div class="p-4 glass card">
-          <div class="text-xs text-gray-400">Launch Window</div>
-          <div class="font-semibold">7AM-5PM UTC</div>
-        </div>
-        <div class="p-4 glass card">
-          <div class="text-xs text-gray-400">Launch Site</div>
-          <div class="font-semibold">Orbital Pad A</div>
-        </div>
-        <div class="p-4 glass card">
-          <div class="text-xs text-gray-400">Vehicle</div>
-          <div class="font-semibold">Starship (Block 2 Booster, Block 1 Ship)</div>
-        </div>
-        <div class="p-4 glass card">
-          <div class="text-xs text-gray-400">Mission Type</div>
-          <div class="font-semibold">Test Flight</div>
-        </div>
-      </div>
+  <!-- HOME SCREEN -->
+  <div id="home-screen" class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg mb-8">Welcome to Booster 16 Incorporated</h1>
+    <p class="text-lg sm:text-xl text-gray-300 mb-12">What would you like to see?</p>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <button onclick="showFlight1()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 1</button>
+      <button onclick="showFlight2()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 2</button>
+      <button onclick="showUpdates()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Updates</button>
     </div>
-  </header>
+  </div>
 
-  <main class="max-w-6xl mx-auto px-6 -mt-16 pb-20">
+  <!-- FLIGHT 1 SECTION -->
+  <div id="flight1-section" class="hidden max-w-6xl mx-auto px-6 py-10">
+    <div class="text-center mb-6">
+      <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+    </div>
+
+    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-4">STARSHIP'S FIRST FLIGHT TEST</h1>
+    <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
+      Starship Integrated Flight Test 1 overview.
+    </p>
+
     <!-- MISSION -->
-    <section id="mission" class="bg-gray-800/40 glass card p-6 sm:p-10 shadow-lg">
-      <div class="sm:flex sm:items-start sm:gap-8">
-        <div class="sm:w-1/2">
-          <h2 class="text-2xl font-bold">Mission Overview</h2>
-          <p class="mt-3 text-gray-300">Write your mission summary here. Highlight goals, payload, events, RP hooks.</p>
-          <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
-            <li>• Goal: Soft splashdown for both the Super Heavy Booster and the Starship Upper Stage in the Gulf Of Mexico</li>
-            <li>• Payload: None</li>
-            <li>• Target Orbit: Suborbital Trajectory</li>
-            <li>• Recovery plan: We are not planning to recover any vehicle</li>
-          </ul>
-        </div>
-
-        <div class="sm:w-1/2 mt-6 sm:mt-0">
-          <!-- Twitch Stream Embed -->
-          <div class="ratio-16x9 rounded-lg overflow-hidden">
-            <iframe src="https://player.twitch.tv/?channel=YOUR_CHANNEL_NAME&parent=localhost" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="mt-4 grid grid-cols-2 gap-3">
-            <div class="p-3 glass card text-sm">
-              <div class="text-xs text-gray-400">Vehicles:</div>
-              <div class="font-semibold">Booster 2 and Ship 3</div>
-            </div>
-            <div class="p-3 glass card text-sm">
-              <div class="text-xs text-gray-400">Engines</div>
-              <div class="font-semibold">33 Sea Level Version 2 Raptor Engines on Booster and 3 Sea Level and 3 Vacuum Version 2 Raptor Engines</div>
-            </div>
-          </div>
-        </div>
+    <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
+      <h2 class="text-2xl font-bold">Mission Overview</h2>
+      <p class="mt-3 text-gray-300">Highlight goals, payload, events, RP hooks for Flight 1.</p>
+      <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
+        <li>• Goal: Soft splashdown for both the Super Heavy Booster and the Starship Upper Stage</li>
+        <li>• Payload: None</li>
+        <li>• Target Orbit: Suborbital Trajectory</li>
+        <li>• Recovery plan: Optional</li>
+      </ul>
+      <div class="mt-6 text-gray-300">
+        <p>There is no livestream of this flight test of Starship.</p>
       </div>
     </section>
 
     <!-- TIMELINE -->
-    <section id="timeline" class="mt-8">
+    <section class="mb-8">
       <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
       <ol class="border-l border-gray-700 ml-2">
         <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T-0</time><p class="mt-1">Engine ignition and liftoff.</p></li>
         <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 2:30</time><p class="mt-1">Max-Q / stage events.</p></li>
-        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 8:00</time><p class="mt-1">Upper-stage burn / payload deployment.</p></li>
-        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 12:45</time><p class="mt-1">Orbital insertion complete.</p></li>
-        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 12:45</time><p class="mt-1">Orbital insertion complete.</p></li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- FLIGHT 2 SECTION -->
+  <div id="flight2-section" class="hidden max-w-6xl mx-auto px-6 py-10">
+    <div class="text-center mb-6">
+      <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+    </div>
+
+    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-4">STARSHIP'S SECOND FLIGHT TEST</h1>
+    <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
+      Starship Integrated Flight Test 2 is our second flight. Check timeline for events.
+    </p>
+
+    <!-- MISSION -->
+    <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
+      <h2 class="text-2xl font-bold">Mission Overview</h2>
+      <p class="mt-3 text-gray-300">Highlight goals, payload, events, RP hooks for Flight 2.</p>
+      <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
+        <li>• Goal: Soft splashdown for both the Super Heavy Booster and the Starship Upper Stage</li>
+        <li>• Payload: None</li>
+        <li>• Target Orbit: Suborbital Trajectory</li>
+        <li>• Recovery plan: Optional</li>
+      </ul>
+
+      <!-- Twitch Stream Embed -->
+      <div class="mt-6 ratio-16x9 rounded-lg overflow-hidden">
+        <iframe src="https://player.twitch.tv/?channel=YOUR_CHANNEL_NAME&parent=localhost" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="mb-8">
+      <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
+      <ol class="border-l border-gray-700 ml-2">
+        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T-0</time><p class="mt-1">Engine ignition and liftoff.</p></li>
+        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 2:30</time><p class="mt-1">Max-Q / stage events.</p></li>
       </ol>
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery" class="mt-8 mb-12">
+    <section id="gallery2" class="mb-12">
       <h3 class="text-xl font-semibold mb-4">Gallery</h3>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div class="h-40 rounded-lg overflow-hidden">
@@ -111,46 +111,65 @@
         <div class="h-40 rounded-lg overflow-hidden">
           <img src="https://i.imgur.com/zQStMth.jpeg" alt="Gallery Image 3" class="w-full h-full object-cover">
         </div>
-        <!-- Add more gallery images by duplicating above div -->
       </div>
     </section>
+  </div>
 
-    <!-- UPDATES -->
-    <section id="updates" class="mt-8">
-      <h3 class="text-xl font-semibold mb-6">Updates</h3>
-      <div id="updates-list" class="space-y-8">
-        <div class="bg-gray-800/40 glass card p-4 sm:p-6">
-          <img src="images/update1.jpg" alt="Update Image" class="w-full rounded-lg mb-4">
-          <h4 class="text-lg font-bold mb-1">First Flight. First Lessons.</h4>
-          <div class="text-xs text-gray-400 mb-2">Date: 26/9/2025</div>
-          <p class="text-gray-300 mb-10">
+  <!-- UPDATES SECTION -->
+  <div id="updates-section" class="hidden max-w-6xl mx-auto px-6 py-10">
+    <div class="text-center mb-6">
+      <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+    </div>
+
+    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-8">Updates</h1>
+    <div class="space-y-8">
+      <div class="bg-gray-800/40 rounded-lg p-6 shadow-lg">
+        <h4 class="text-lg font-bold mb-1">First Flight. First Lessons.</h4>
+        <div class="text-xs text-gray-400 mb-2">Date: 26/9/2025</div>
+        <p class="text-gray-300 mb-10">
             The Starship launch began nominally, with all 33 Raptor engines igniting successfully and the vehicle passing through Max-Q. Stage separation proceeded as planned, and the Starship upper stage lit all six of its engines without issue. Despite the challenges that followed, these moments demonstrated that critical systems such as engine ignition, stage separation, and initial upper stage operations were functioning as intended.
-          </p>
-          <p class="text-gray-300 mb-10">
+        </p>
+        <p class="text-gray-300 mb-10">
             The Super Heavy Booster encountered multiple setbacks after Max-Q. Three engines failed shortly after liftoff, and two of these could not relight during the boostback burn. Additional engine failures occurred throughout the boostback, leaving only three operational engines by the time the vehicle began its coast to the landing burn. At approximately 5 km altitude, the booster was lost. Structural issues were also noted, with one grid fin ripped off during Max-Q and another lost during ascent.
-          </p>
-          <p class="text-gray-300 mb-10">
+        </p>
+        <p class="text-gray-300 mb-10">
             The Starship upper stage initially performed well, lighting all six engines at stage separation. However, the flight ended prematurely when the vehicle exploded at 80 km altitude, traveling at roughly 11 km/h. While the ship completed its stage separation and engine ignition successfully, it was unable to sustain flight beyond the initial ascent phase, marking a critical failure in upper stage performance.
-          </p>
-          <p class="text-gray-300 mb-10">
+        </p>
+        <p class="text-gray-300 mb-10">
             Preliminary analysis suggests that the Super Heavy Booster failures were caused by a combination of engine anomalies and structural stress during ascent. The early engine shutdowns likely resulted from a fuel mixture imbalance under high dynamic pressure, compounded by the loss of two grid fins that affected vehicle stability and aerodynamic loads. To address these issues, the engineering team plans to reinforce grid fin mounts, adjust Raptor fuel delivery algorithms, and implement additional sensors to monitor engine performance in real time. These upgrades aim to ensure that the booster can survive Max-Q and maintain thrust throughout boostback and landing sequences.
-          </p>
-          <p class="text-gray-300 mb-10">
+        </p>
+        <p class="text-gray-300 mb-10">
             The Starship upper stage failure appears to have been triggered by an overpressure event in one of the main propellant tanks, likely exacerbated by thermal stress and the extreme velocity of 11 000 km/h. This led to structural compromise and the subsequent explosion at 80 km altitude. To prevent a repeat, the team plans to reinforce the tank supports and upgrade the venting system to safely release excess pressure during high-speed ascent. Additional work will focus on strengthening the vehicle’s aft section and optimizing engine startup sequences to reduce shock loads on the structure. These improvements aim to allow Starship to safely complete stage separation and sustain flight beyond the current altitude limits.
-          </p>
-        </div>
-        <!-- Duplicate above div for more updates -->
+        </p>
       </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="mt-12 text-center text-sm text-gray-500">
-      <p>Booster 16 Inc. 2025. All Rights Reserved.</p>
-    </footer>
-  </main>
+    </div>
+  </div>
 
   <script>
-    function setHero(path){ document.getElementById('hero').style.backgroundImage = `url('${path}')`; }
+    function showHome() {
+      document.getElementById('home-screen').classList.remove('hidden');
+      document.getElementById('flight1-section').classList.add('hidden');
+      document.getElementById('flight2-section').classList.add('hidden');
+      document.getElementById('updates-section').classList.add('hidden');
+    }
+    function showFlight1() {
+      document.getElementById('home-screen').classList.add('hidden');
+      document.getElementById('flight1-section').classList.remove('hidden');
+      document.getElementById('flight2-section').classList.add('hidden');
+      document.getElementById('updates-section').classList.add('hidden');
+    }
+    function showFlight2() {
+      document.getElementById('home-screen').classList.add('hidden');
+      document.getElementById('flight1-section').classList.add('hidden');
+      document.getElementById('flight2-section').classList.remove('hidden');
+      document.getElementById('updates-section').classList.add('hidden');
+    }
+    function showUpdates() {
+      document.getElementById('home-screen').classList.add('hidden');
+      document.getElementById('flight1-section').classList.add('hidden');
+      document.getElementById('flight2-section').classList.add('hidden');
+      document.getElementById('updates-section').classList.remove('hidden');
+    }
   </script>
 </body>
 </html>
