@@ -62,17 +62,8 @@
 
     <!-- GALLERY -->
     <section class="mb-12">
-      <h3 class="text-xl font-semibold mb-4">Gallery</h3>
+      <h3 class="text-xl font-semibold mb-4"> </h3>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/yHMNPyY.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
-        </div>
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/nQJqtuU.jpeg" alt="Gallery Image 2" class="w-full h-full object-cover">
-        </div>
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/N3hacXy.jpeg" alt="Gallery Image 2" class="w-full h-full object-cover">
-        </div>
       </div>
     </section>
   </div>
@@ -230,6 +221,22 @@
     else if(hash === '#updates') showUpdates();
     else showHome();
   });
+</script>
+<script>
+function clearHash() {
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+}
+
+// Observe when #home-screen becomes visible
+const homeScreen = document.getElementById('home-screen');
+const observer = new MutationObserver(() => {
+  if (!homeScreen.classList.contains('hidden')) {
+    clearHash();
+  }
+});
+observer.observe(homeScreen, { attributes: true, attributeFilter: ['class'] });
 </script>
 </body>
 </html>
