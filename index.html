@@ -96,14 +96,87 @@
       </div>
     </section>
 
-    <!-- TIMELINE -->
-    <section class="mb-8">
-      <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
-      <ol class="border-l border-gray-700 ml-2">
-        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T-0</time><p class="mt-1">Engine ignition and liftoff.</p></li>
-        <li class="mb-6 ml-6"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div><time class="text-sm text-gray-400">T+ 2:30</time><p class="mt-1">Max-Q / stage events.</p></li>
-      </ol>
-    </section>
+<!-- TIMELINE -->
+<section class="mb-8">
+  <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
+
+  <style>
+    /* Stop the vertical line at the last timeline item */
+    ol.timeline li:last-child::before {
+      content: '';
+      height: 0;
+      background: none;
+    }
+  </style>
+
+  <ol class="timeline border-l border-gray-700 ml-2 relative">
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T- 0</time>
+      <p class="mt-1">Engine Ignition And Liftoff.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 0:30</time>
+      <p class="mt-1">Max-Q.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:30</time>
+      <p class="mt-1">MECO (Most Engines Cut Off) And Ship Ignition.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:35</time>
+      <p class="mt-1">Stage Separation.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:40</time>
+      <p class="mt-1">Boostback Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 2:17</time>
+      <p class="mt-1">Boostback Burn Shutdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:08</time>
+      <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:41</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:48</time>
+      <p class="mt-1">SECO (Second Engine Cut Off).</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 17:30</time>
+      <p class="mt-1">Relight Demo Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 17:35</time>
+      <p class="mt-1">Relight Demo Shutdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 22:30</time>
+      <p class="mt-1">Entry Interface.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 27:56</time>
+      <p class="mt-1">Starship Is Transonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 28:49</time>
+      <p class="mt-1">Starship Is Subsonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 29:51</time>
+      <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 30:07</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+  </ol>
+</section>
+
 
     <!-- GALLERY -->
     <section class="mb-12">
