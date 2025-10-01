@@ -211,42 +211,97 @@
     STARSHIP'S THIRD FLIGHT TEST
   </h1>
   <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
-    PLACEHOLDER VALUE.
+    On Starship's Third Flight Test we are aiming on going on our planned suborbital trajectory this time around. For this flight we're also NOT aiming to do an in-space raptor relight to demonstrate de-orbit burns due to the last 2 flight failures. For booster we are not going for the catch this time and instead the booster will go for an offshore splashdown in the Gulf Of Mexico. We also wanna do a test witg tge booster during its divert phase. We wanna shut down one of the three middle engines right after the booster goes into its divert phase. If this test goes well we will most likely go for a tower catch in the next flight. All that said let's hope for a successful flight this time around again. 
   </p>
 
   <!-- Mission Overview -->
   <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
     <h2 class="text-2xl font-bold">Mission Overview</h2>
-    <p class="mt-3 text-gray-300">PLACEHOLDER VALUE (mission description, goals, payload, recovery).</p>
     <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
-      <li>• Goal: PLACEHOLDER VALUE</li>
-      <li>• Payload: PLACEHOLDER VALUE</li>
-      <li>• Target Orbit: PLACEHOLDER VALUE</li>
-      <li>• Recovery plan: PLACEHOLDER VALUE</li>
+      <li>• Goal: Splashdown for both the Super Heavy Booster and the Starship Upper Stage in the Gulf Of Mexico.</li>
+      <li>• Payload: None</li>
+      <li>• Target Orbit: Suborbital Trajectory</li>
+      <li>• Recovery plan: We are not planning to recover any vehicle on this flight.</li>
     </ul>
 
     <!-- YouTube Stream -->
-    <div class="mt-6 ratio-16x9 rounded-lg overflow-hidden">
-      <iframe 
-        src="PLACEHOLDER VALUE (YouTube embed link)" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
+<div class="mt-6 ratio-16x9 rounded-lg overflow-hidden flex items-center justify-center bg-gray-800 text-gray-300 text-center p-4">
+  VIDEO WILL BE AVAILABLE AFTER FLIGHT
+</div>
   </section>
 
-  <!-- Timeline -->
-  <section class="mb-8">
-    <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
-    <ol class="border-l border-gray-700 ml-2">
-      <li class="mb-6 ml-6">
-        <div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-        <time class="text-sm text-gray-400">PLACEHOLDER</time>
-        <p class="mt-1">PLACEHOLDER VALUE</p>
-      </li>
-    </ol>
-  </section>
+<!-- TIMELINE -->
+<section class="mb-8">
+  <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
+
+  <style>
+    /* Stop the vertical line at the last timeline item */
+    ol.timeline li:last-child::before {
+      content: '';
+      height: 0;
+      background: none;
+    }
+  </style>
+
+  <ol class="timeline border-l border-gray-700 ml-2 relative">
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T- 0</time>
+      <p class="mt-1">Engine Ignition And Liftoff.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 0:30</time>
+      <p class="mt-1">Max-Q.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:30</time>
+      <p class="mt-1">MECO (Most Engines Cut Off) And Ship Ignition.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:35</time>
+      <p class="mt-1">Stage Separation.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:40</time>
+      <p class="mt-1">Boostback Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 2:17</time>
+      <p class="mt-1">Boostback Burn Shutdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:08</time>
+      <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:41</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:48</time>
+      <p class="mt-1">SECO (Second Engine Cut Off).</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 22:30</time>
+      <p class="mt-1">Entry Interface.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 27:56</time>
+      <p class="mt-1">Starship Is Transonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 28:49</time>
+      <p class="mt-1">Starship Is Subsonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 29:51</time>
+      <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 30:07</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+  </ol>
+</section>
 
   <!-- Gallery -->
   <section class="mb-12">
