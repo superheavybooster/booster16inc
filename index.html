@@ -21,6 +21,7 @@
     <div class="flex flex-col sm:flex-row justify-center gap-6">
       <button onclick="showFlight1()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 1</button>
       <button onclick="showFlight2()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 2</button>
+      <button onclick="showFlight3()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 3</button>
       <button onclick="showUpdates()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Updates</button>
     </div>
   </div>
@@ -200,6 +201,65 @@
     </section>
   </div>
 
+  <!-- FLIGHT 3 SECTION -->
+<div id="flight3-section" class="hidden max-w-6xl mx-auto px-6 py-10">
+  <div class="text-center mb-6">
+    <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+  </div>
+
+  <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-4">
+    STARSHIP'S THIRD FLIGHT TEST
+  </h1>
+  <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
+    PLACEHOLDER VALUE (intro text for Flight 3).
+  </p>
+
+  <!-- Mission Overview -->
+  <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
+    <h2 class="text-2xl font-bold">Mission Overview</h2>
+    <p class="mt-3 text-gray-300">PLACEHOLDER VALUE (mission description, goals, payload, recovery).</p>
+    <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
+      <li>• Goal: PLACEHOLDER VALUE</li>
+      <li>• Payload: PLACEHOLDER VALUE</li>
+      <li>• Target Orbit: PLACEHOLDER VALUE</li>
+      <li>• Recovery plan: PLACEHOLDER VALUE</li>
+    </ul>
+
+    <!-- YouTube Stream -->
+    <div class="mt-6 ratio-16x9 rounded-lg overflow-hidden">
+      <iframe 
+        src="PLACEHOLDER VALUE (YouTube embed link)" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="mb-8">
+    <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
+    <ol class="border-l border-gray-700 ml-2">
+      <li class="mb-6 ml-6">
+        <div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+        <time class="text-sm text-gray-400">PLACEHOLDER</time>
+        <p class="mt-1">PLACEHOLDER VALUE</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Gallery -->
+  <section class="mb-12">
+    <h3 class="text-xl font-semibold mb-4">Gallery</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="h-40 rounded-lg overflow-hidden">
+        <img src="PLACEHOLDER VALUE (image link)" alt="Gallery Image 1" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+</div>
+
+
   <!-- UPDATES SECTION -->
   <div id="updates-section" class="hidden max-w-6xl mx-auto px-6 py-10">
     <div class="text-center mb-6">
@@ -254,46 +314,26 @@
     </div>
   </div>
 
-  <script>
-    function showHome() {
-      document.getElementById('home-screen').classList.remove('hidden');
-      document.getElementById('flight1-section').classList.add('hidden');
-      document.getElementById('flight2-section').classList.add('hidden');
-      document.getElementById('updates-section').classList.add('hidden');
-    }
-    function showFlight1() {
-      document.getElementById('home-screen').classList.add('hidden');
-      document.getElementById('flight1-section').classList.remove('hidden');
-      document.getElementById('flight2-section').classList.add('hidden');
-      document.getElementById('updates-section').classList.add('hidden');
-    }
-    function showFlight2() {
-      document.getElementById('home-screen').classList.add('hidden');
-      document.getElementById('flight1-section').classList.add('hidden');
-      document.getElementById('flight2-section').classList.remove('hidden');
-      document.getElementById('updates-section').classList.add('hidden');
-    }
-    function showUpdates() {
-      document.getElementById('home-screen').classList.add('hidden');
-      document.getElementById('flight1-section').classList.add('hidden');
-      document.getElementById('flight2-section').classList.add('hidden');
-      document.getElementById('updates-section').classList.remove('hidden');
-    }
-  </script>
-  <script>
-  // Functions to show sections
+<script>
+  // Show/Hide sections
   function showHome(updateURL=false) {
     document.getElementById('home-screen').classList.remove('hidden');
     document.getElementById('flight1-section').classList.add('hidden');
     document.getElementById('flight2-section').classList.add('hidden');
+    document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
-    if(updateURL) history.replaceState(null, '', '#home');
+
+    // clear hash when going home
+    if(updateURL) {
+      history.replaceState(null, '', window.location.pathname);
+    }
   }
 
   function showFlight1() {
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('flight1-section').classList.remove('hidden');
     document.getElementById('flight2-section').classList.add('hidden');
+    document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
     history.replaceState(null, '', '#flight1');
   }
@@ -302,42 +342,47 @@
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('flight1-section').classList.add('hidden');
     document.getElementById('flight2-section').classList.remove('hidden');
+    document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
     history.replaceState(null, '', '#flight2');
+  }
+
+  function showFlight3() {
+    document.getElementById('home-screen').classList.add('hidden');
+    document.getElementById('flight1-section').classList.add('hidden');
+    document.getElementById('flight2-section').classList.add('hidden');
+    document.getElementById('flight3-section').classList.remove('hidden');
+    document.getElementById('updates-section').classList.add('hidden');
+    history.replaceState(null, '', '#flight3');
   }
 
   function showUpdates() {
     document.getElementById('home-screen').classList.add('hidden');
     document.getElementById('flight1-section').classList.add('hidden');
     document.getElementById('flight2-section').classList.add('hidden');
+    document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.remove('hidden');
     history.replaceState(null, '', '#updates');
   }
 
-  // Check URL hash on page load
+  // Handle deep linking on load
   window.addEventListener('load', () => {
     const hash = window.location.hash;
     if(hash === '#flight1') showFlight1();
     else if(hash === '#flight2') showFlight2();
+    else if(hash === '#flight3') showFlight3();
     else if(hash === '#updates') showUpdates();
     else showHome();
   });
-</script>
-<script>
-function clearHash() {
-  if (window.location.hash) {
-    history.replaceState(null, '', window.location.pathname);
-  }
-}
 
-// Observe when #home-screen becomes visible
-const homeScreen = document.getElementById('home-screen');
-const observer = new MutationObserver(() => {
-  if (!homeScreen.classList.contains('hidden')) {
-    clearHash();
-  }
-});
-observer.observe(homeScreen, { attributes: true, attributeFilter: ['class'] });
+  // Clear hash automatically when Home is shown
+  const homeScreen = document.getElementById('home-screen');
+  const observer = new MutationObserver(() => {
+    if (!homeScreen.classList.contains('hidden')) {
+      history.replaceState(null, '', window.location.pathname);
+    }
+  });
+  observer.observe(homeScreen, { attributes: true, attributeFilter: ['class'] });
 </script>
 </body>
 </html>
