@@ -14,6 +14,115 @@
 </head>
 <body class="bg-gray-900 text-white font-sans leading-normal">
 
+  <style>
+  /* ====== General Styling ====== */
+  body {
+    background-color: #0b0b0b;
+    color: #e5e5e5;
+    font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ====== Headings ====== */
+  h1, h2, h3, h4 {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+
+  /* ====== Buttons ====== */
+  button {
+    transition: all 0.25s ease;
+  }
+  button:hover {
+    transform: scale(1.03);
+    background-color: #4b5563;
+  }
+
+  /* ====== Cards ====== */
+  .bg-gray-800\/40 {
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .bg-gray-800\/40:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ====== Images ====== */
+  img.rounded-lg {
+    transition: all 0.3s ease;
+  }
+  img.rounded-lg:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+  }
+
+  /* ====== Timeline Dots ====== */
+  .timeline-dot {
+    background-color: #ffffff;
+    border: 2px solid #4b5563;
+    transition: all 0.2s ease;
+  }
+  .timeline-dot:hover {
+    background-color: #60a5fa;
+    border-color: #60a5fa;
+    box-shadow: 0 0 10px #3b82f6;
+  }
+
+  /* ====== Sections ====== */
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  /* ====== Update Section Headings ====== */
+  #updates-section h4 {
+    color: #f9fafb;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  }
+
+  /* ====== Smooth transitions for showing/hiding ====== */
+  .hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+  .hidden:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* ====== Links ====== */
+  a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+  }
+
+  /* ====== Scrollbar ====== */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+</style>
+
   <!-- HOME SCREEN -->
   <div id="home-screen" class="max-w-3xl mx-auto px-6 py-20 text-center">
     <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg mb-8">Welcome to Booster 16 Incorporated</h1>
