@@ -7,9 +7,29 @@
   <link rel="icon" href="https://imgur.com/doXfiAA.jpeg" type="image/png">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .hidden { display: none; }
     .ratio-16x9 { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; }
     .ratio-16x9 iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
+    
+    /* Fixed Join Button */
+    #fixedJoinBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4b5563;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.25s ease;
+    }
+    #fixedJoinBtn:hover {
+      transform: scale(1.05);
+      background-color: #6b7280;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans leading-normal">
@@ -85,15 +105,7 @@
 
   /* ====== Smooth transitions for showing/hiding ====== */
   .hidden {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .hidden:not(.hidden) {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+    display: none !important;
   }
 
   /* ====== Links ====== */
@@ -121,19 +133,173 @@
   ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
+
+  /* ====== Join Form Styling ====== */
+  #join-form-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .team-roles {
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  
+  .team-roles h3 {
+    color: #60a5fa;
+    margin-top: 0;
+  }
+  
+  .role {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #374151;
+    border-radius: 5px;
+  }
+  
+  .role-title {
+    font-weight: bold;
+    color: #60a5fa;
+    margin-bottom: 5px;
+  }
+  
+  #joinFormContainer {
+    background-color: #1f2937;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  #joinFormContainer h2 {
+    color: #60a5fa;
+    margin-top: 0;
+  }
+  
+  #joinFormContainer label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #joinFormContainer input,
+  #joinFormContainer textarea,
+  #joinFormContainer select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #4b5563;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  #joinFormContainer textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  #joinFormContainer select {
+    cursor: pointer;
+  }
+  
+  #joinFormContainer button[type="submit"] {
+    background-color: #4b5563;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  #joinFormContainer button[type="submit"]:hover {
+    background-color: #6b7280;
+  }
+  
+  .required {
+    color: #60a5fa;
+  }
 </style>
 
-  <!-- HOME SCREEN -->
-  <div id="home-screen" class="max-w-3xl mx-auto px-6 py-20 text-center">
-    <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg mb-8">Welcome to Booster 16 Incorporated</h1>
-    <p class="text-lg sm:text-xl text-gray-300 mb-12">What would you like to see?</p>
-    <div class="flex flex-col sm:flex-row justify-center gap-6">
-      <button onclick="showFlight1()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 1</button>
-      <button onclick="showFlight2()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 2</button>
-      <button onclick="showFlight3()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 3</button>
-      <button onclick="showUpdates()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Updates</button>
+<!-- Fixed Join Button (always visible) -->
+<button id="fixedJoinBtn">Join Us</button>
+
+<!-- HOME SCREEN -->
+<div id="home-screen" class="max-w-3xl mx-auto px-6 py-20 text-center">
+  <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg mb-8">Welcome to Booster 16 Incorporated</h1>
+  <p class="text-lg sm:text-xl text-gray-300 mb-12">What would you like to see?</p>
+  <div class="flex flex-col sm:flex-row justify-center gap-6">
+    <button onclick="showFlight1()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 1</button>
+    <button onclick="showFlight2()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 2</button>
+    <button onclick="showFlight3()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Starship Flight 3</button>
+    <button onclick="showUpdates()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Updates</button>
+  </div>
+</div>
+
+<!-- JOIN FORM SECTION -->
+<div id="join-form-section" class="hidden">
+  <div class="text-center mb-6">
+    <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+  </div>
+
+  <!-- Team Roles Information -->
+  <div class="team-roles">
+    <h3>Available Team Positions</h3>
+    
+    <div class="role">
+      <div class="role-title">Flight Director</div>
+      <div>Be the lead of mission control and command all go/no go decisions.</div>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Booster Engineer</div>
+      <div>Engineer Boosters and change designs to fix problems.</div>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Ship Engineer</div>
+      <div>Engineer Ships and change designs to fix problems.</div>
+    </div>
+
+    <div class="role">
+      <div class="role-title">Launch Control</div>
+      <div>Be a member of launch control to have access to all camera views and help the Booster and Ship Engineers</div>
     </div>
   </div>
+
+  <!-- Join Form -->
+  <div id="joinFormContainer">
+    <h2>Join Our Team</h2>
+    <form id="joinForm">
+      <label>Name/Nickname <span class="required">*</span></label>
+      <input type="text" id="name" required>
+
+      <label>Discord Username or Email <span class="required">*</span></label>
+      <input type="text" id="contact" placeholder="e.g., username1234 or email@example.com" required>
+
+      <label>What part of the team do you want to join? <span class="required">*</span></label>
+      <select id="teamRole" required>
+        <option value="">-- Select a role --</option>
+        <option value="Flight Director">Flight Director</option>
+        <option value="Launch Control">Launch Control</option>
+        <option value="Booster Engineer">Booster Engineer</option>
+        <option value="Ship Engineer">Ship Engineer</option>
+      </select>
+
+      <label>Why do you want to be part of the team? <span class="required">*</span></label>
+      <textarea id="why" placeholder="Tell us about your motivation, experience, and what you can bring to the team..." required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</div>
 
   <!-- FLIGHT 1 SECTION -->
   <div id="flight1-section" class="hidden max-w-6xl mx-auto px-6 py-10">
@@ -262,140 +428,6 @@
       <p class="mt-1">SECO (Second Engine Cut Off).</p>
     </li>
     <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 17:30</time>
-      <p class="mt-1">Relight Demo Startup.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 17:35</time>
-      <p class="mt-1">Relight Demo Shutdown.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 22:30</time>
-      <p class="mt-1">Entry Interface.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 27:56</time>
-      <p class="mt-1">Starship Is Transonic.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 28:49</time>
-      <p class="mt-1">Starship Is Subsonic.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 29:51</time>
-      <p class="mt-1">Landing Burn Startup.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 30:07</time>
-      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
-    </li>
-  </ol>
-</section>
-
-
-    <!-- GALLERY -->
-    <section class="mb-12">
-      <h3 class="text-xl font-semibold mb-4">Gallery</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/yHMNPyY.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
-        </div>
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/nQJqtuU.jpeg" alt="Gallery Image 2" class="w-full h-full object-cover">
-        </div>
-        <div class="h-40 rounded-lg overflow-hidden">
-          <img src="https://imgur.com/N3hacXy.jpeg" alt="Gallery Image 2" class="w-full h-full object-cover">
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- FLIGHT 3 SECTION -->
-<div id="flight3-section" class="hidden max-w-6xl mx-auto px-6 py-10">
-  <div class="text-center mb-6">
-    <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
-  </div>
-
-  <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-4">
-    STARSHIP'S THIRD FLIGHT TEST
-  </h1>
-  <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
-    On Starship's Third Flight Test we are aiming on going on our planned suborbital trajectory this time around. For this flight we're also NOT aiming to do an in-space raptor relight to demonstrate de-orbit burns due to the last 2 flight failures. For booster we are not going for the catch this time and instead the booster will go for an offshore splashdown in the Gulf Of Mexico. We also wanna do a test with the booster during its divert phase. We wanna shut down one of the three middle engines right after the booster goes into its divert phase. If this test goes well we will most likely go for a tower catch in the next flight. All that said let's hope for a successful flight this time around again. 
-  </p>
-
-  <!-- Mission Overview -->
-  <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
-    <h2 class="text-2xl font-bold">Mission Overview</h2>
-    <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
-      <li>• Goal: Splashdown for both the Super Heavy Booster and the Starship Upper Stage in the Gulf Of Mexico.</li>
-      <li>• Payload: None</li>
-      <li>• Target Orbit: Suborbital Trajectory</li>
-      <li>• Recovery plan: We are not planning to recover any vehicle on this flight.</li>
-    </ul>
-
-    <!-- YouTube Stream -->
-<div class="mt-6 ratio-16x9 rounded-lg overflow-hidden">
-  <iframe 
-    src="https://www.youtube.com/embed/sEWwFpTNny4" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-  </iframe>
-</div>
-
-  </section>
-
-<!-- TIMELINE -->
-<section class="mb-8">
-  <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
-
-  <style>
-    /* Stop the vertical line at the last timeline item */
-    ol.timeline li:last-child::before {
-      content: '';
-      height: 0;
-      background: none;
-    }
-  </style>
-
-  <ol class="timeline border-l border-gray-700 ml-2 relative">
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T- 0</time>
-      <p class="mt-1">Engine Ignition And Liftoff.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 0:30</time>
-      <p class="mt-1">Max-Q.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 1:30</time>
-      <p class="mt-1">MECO (Most Engines Cut Off) And Ship Ignition.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 1:35</time>
-      <p class="mt-1">Stage Separation.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 1:40</time>
-      <p class="mt-1">Boostback Burn Startup.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 2:17</time>
-      <p class="mt-1">Boostback Burn Shutdown.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 4:08</time>
-      <p class="mt-1">Landing Burn Startup.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 4:41</time>
-      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
-      <time class="text-sm text-gray-400">T+ 4:48</time>
-      <p class="mt-1">SECO (Second Engine Cut Off).</p>
-    </li>
-    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
       <time class="text-sm text-gray-400">T+ 22:30</time>
       <p class="mt-1">Entry Interface.</p>
     </li>
@@ -423,7 +455,13 @@
     <h3 class="text-xl font-semibold mb-4">Gallery</h3>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       <div class="h-40 rounded-lg overflow-hidden">
-        <img src="https://imgur.com/gK18S1S.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
+        <img src="https://imgur.com/yHMNPyY.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
+      </div>
+            <div class="h-40 rounded-lg overflow-hidden">
+        <img src="https://imgur.com/nQJqtuU.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
+      </div>
+            <div class="h-40 rounded-lg overflow-hidden">
+        <img src="https://imgur.com/N3hacXy.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
       </div>
     </div>
   </section>
@@ -507,20 +545,15 @@
   </div>
 </div>
 
-
 <script>
-  // Show/Hide sections
-  function showHome(updateURL=false) {
+  function showHome() {
     document.getElementById('home-screen').classList.remove('hidden');
     document.getElementById('flight1-section').classList.add('hidden');
     document.getElementById('flight2-section').classList.add('hidden');
     document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
-
-    // clear hash when going home
-    if(updateURL) {
-      history.replaceState(null, '', window.location.pathname);
-    }
+    document.getElementById('join-form-section').classList.add('hidden');
+    history.replaceState(null, '', window.location.pathname);
   }
 
   function showFlight1() {
@@ -529,6 +562,7 @@
     document.getElementById('flight2-section').classList.add('hidden');
     document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
+    document.getElementById('join-form-section').classList.add('hidden');
     history.replaceState(null, '', '#flight1');
   }
 
@@ -538,6 +572,7 @@
     document.getElementById('flight2-section').classList.remove('hidden');
     document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.add('hidden');
+    document.getElementById('join-form-section').classList.add('hidden');
     history.replaceState(null, '', '#flight2');
   }
 
@@ -547,6 +582,7 @@
     document.getElementById('flight2-section').classList.add('hidden');
     document.getElementById('flight3-section').classList.remove('hidden');
     document.getElementById('updates-section').classList.add('hidden');
+    document.getElementById('join-form-section').classList.add('hidden');
     history.replaceState(null, '', '#flight3');
   }
 
@@ -556,8 +592,63 @@
     document.getElementById('flight2-section').classList.add('hidden');
     document.getElementById('flight3-section').classList.add('hidden');
     document.getElementById('updates-section').classList.remove('hidden');
+    document.getElementById('join-form-section').classList.add('hidden');
     history.replaceState(null, '', '#updates');
   }
+
+  function showJoinForm() {
+    document.getElementById('home-screen').classList.add('hidden');
+    document.getElementById('flight1-section').classList.add('hidden');
+    document.getElementById('flight2-section').classList.add('hidden');
+    document.getElementById('flight3-section').classList.add('hidden');
+    document.getElementById('updates-section').classList.add('hidden');
+    document.getElementById('join-form-section').classList.remove('hidden');
+    history.replaceState(null, '', '#join');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Fixed Join Button functionality
+  const fixedJoinBtn = document.getElementById('fixedJoinBtn');
+  fixedJoinBtn.addEventListener('click', () => {
+    showJoinForm();
+  });
+
+  // Join Form submission
+  document.getElementById('joinForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const teamRole = document.getElementById('teamRole').value;
+    const why = document.getElementById('why').value.trim();
+
+    if (!name || !contact || !teamRole || !why) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    try {
+      await fetch('YOUR_GOOGLE_SCRIPT_URL_HERE', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          name, 
+          contact, 
+          teamRole, 
+          why 
+        })
+      });
+
+      alert('Thank you, ' + name + '! Your application has been submitted successfully. We\'ll get back to you soon!');
+      this.reset();
+      showHome();
+    } catch (error) {
+      alert('There was an error submitting your application. Please try again.');
+    }
+  });
 
   // Handle deep linking on load
   window.addEventListener('load', () => {
@@ -566,17 +657,111 @@
     else if(hash === '#flight2') showFlight2();
     else if(hash === '#flight3') showFlight3();
     else if(hash === '#updates') showUpdates();
+    else if(hash === '#join') showJoinForm();
     else showHome();
   });
-
-  // Clear hash automatically when Home is shown
-  const homeScreen = document.getElementById('home-screen');
-  const observer = new MutationObserver(() => {
-    if (!homeScreen.classList.contains('hidden')) {
-      history.replaceState(null, '', window.location.pathname);
-    }
-  });
-  observer.observe(homeScreen, { attributes: true, attributeFilter: ['class'] });
 </script>
 </body>
 </html>
+
+  <!-- FLIGHT 3 SECTION -->
+<div id="flight3-section" class="hidden max-w-6xl mx-auto px-6 py-10">
+  <div class="text-center mb-6">
+    <button onclick="showHome()" class="px-6 py-3 rounded-2xl bg-gray-600 hover:bg-gray-700">Back to Home</button>
+  </div>
+
+  <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight drop-shadow-lg text-center mb-4">
+    STARSHIP'S THIRD FLIGHT TEST
+  </h1>
+  <p class="text-lg sm:text-xl text-gray-300 text-center mb-8">
+    On Starship's Third Flight Test we are aiming on going on our planned suborbital trajectory this time around. For this flight we're also NOT aiming to do an in-space raptor relight to demonstrate de-orbit burns due to the last 2 flight failures. For booster we are not going for the catch this time and instead the booster will go for an offshore splashdown in the Gulf Of Mexico. We also wanna do a test with the booster during its divert phase. We wanna shut down one of the three middle engines right after the booster goes into its divert phase. If this test goes well we will most likely go for a tower catch in the next flight. All that said let's hope for a successful flight this time around again. 
+  </p>
+
+  <!-- Mission Overview -->
+  <section class="bg-gray-800/40 rounded-lg p-6 sm:p-10 shadow-lg mb-8">
+    <h2 class="text-2xl font-bold">Mission Overview</h2>
+    <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
+      <li>• Goal: Splashdown for both the Super Heavy Booster and the Starship Upper Stage in the Gulf Of Mexico.</li>
+      <li>• Payload: None</li>
+      <li>• Target Orbit: Suborbital Trajectory</li>
+      <li>• Recovery plan: We are not planning to recover any vehicle on this flight.</li>
+    </ul>
+
+    <!-- YouTube Stream -->
+<div class="mt-6 ratio-16x9 rounded-lg overflow-hidden">
+  <iframe 
+    src="https://www.youtube.com/embed/sEWwFpTNny4" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+<!-- TIMELINE -->
+<section class="mb-8">
+  <h3 class="text-xl font-semibold mb-4">Flight Timeline</h3>
+
+  <ol class="timeline border-l border-gray-700 ml-2 relative">
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T- 0</time>
+      <p class="mt-1">Engine Ignition And Liftoff.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 0:30</time> <p class="mt-1">Max-Q.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:30</time>
+      <p class="mt-1">MECO (Most Engines Cut Off) And Ship Ignition.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:35</time> <p class="mt-1">Stage Separation.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 1:40</time>
+      <p class="mt-1">Boostback Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 2:17</time> <p class="mt-1">Boostback Burn Shutdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:08</time> <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:41</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 4:48</time> <p class="mt-1">SECO (Second Engine Cut Off).</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 22:30</time>
+      <p class="mt-1">Entry Interface.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 27:56</time> <p class="mt-1">Starship Is Transonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 28:49</time>
+      <p class="mt-1">Starship Is Subsonic.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 29:51</time>
+      <p class="mt-1">Landing Burn Startup.</p>
+    </li>
+    <li class="mb-6 ml-6 relative"><div class="absolute -ml-8 mt-1 w-4 h-4 bg-white rounded-full"></div>
+      <time class="text-sm text-gray-400">T+ 30:07</time>
+      <p class="mt-1">Landing Burn Shutdown And Splashdown.</p>
+    </li>
+  </ol>
+</section>
+
+  <!-- Gallery -->
+  <section class="mb-12">
+    <h3 class="text-xl font-semibold mb-4">Gallery</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="h-40 rounded-lg overflow-hidden">
+        <img src="https://imgur.com/gK18S1S.jpeg" alt="Gallery Image 1" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+</div>
