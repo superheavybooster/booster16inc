@@ -22,6 +22,14 @@ if (joinForm) {
       return;
     }
 
+    // Get submit button and disable it
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.style.opacity = '0.6';
+    submitBtn.style.cursor = 'not-allowed';
+
     try {
       await fetch('https://script.google.com/macros/s/AKfycbxVBp4zfFlimweKTvrm6oXpQoxWSk2fwOXmCBY5_nslimwIpJCcw-HpBWR-NO3mPWf0FA/exec', {
         method: 'POST',
@@ -48,6 +56,12 @@ if (joinForm) {
       history.replaceState(null, '', window.location.pathname);
     } catch (error) {
       alert('There was an error submitting your application. Please try again.');
+    } finally {
+      // Re-enable button after submission (success or error)
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      submitBtn.style.opacity = '1';
+      submitBtn.style.cursor = 'pointer';
     }
   });
 }
