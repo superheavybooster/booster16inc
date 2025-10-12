@@ -8,9 +8,16 @@ if (fixedJoinBtn) {
 
 // Join Form submission (only on index.html)
 const joinForm = document.getElementById('joinForm');
+let isSubmitting = false;
+
 if (joinForm) {
   joinForm.addEventListener('submit', async function(e) {
     e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (isSubmitting) {
+      return;
+    }
     
     const name = document.getElementById('name').value.trim();
     const contact = document.getElementById('contact').value.trim();
@@ -25,13 +32,15 @@ if (joinForm) {
     // Get submit button and disable it
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
+    isSubmitting = true;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
     submitBtn.style.opacity = '0.6';
     submitBtn.style.cursor = 'not-allowed';
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbxVBp4zfFlimweKTvrm6oXpQoxWSk2fwOXmCBY5_nslimwIpJCcw-HpBWR-NO3mPWf0FA/exec', {
+      // Send the form data
+      fetch('https://script.google.com/macros/s/AKfycbxVBp4zfFlimweKTvrm6oXpQoxWSk2fwOXmCBY5_nslimwIpJCcw-HpBWR-NO3mPWf0FA/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -44,6 +53,9 @@ if (joinForm) {
           why 
         })
       });
+
+      // Wait a bit to ensure submission goes through (no-cors doesn't return response)
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
       alert('Thank you, ' + name + '! Your application has been submitted successfully. We\'ll get back to you soon!');
       this.reset();
@@ -58,6 +70,7 @@ if (joinForm) {
       alert('There was an error submitting your application. Please try again.');
     } finally {
       // Re-enable button after submission (success or error)
+      isSubmitting = false;
       submitBtn.disabled = false;
       submitBtn.textContent = originalText;
       submitBtn.style.opacity = '1';
