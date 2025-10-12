@@ -63,8 +63,10 @@ if (joinForm) {
       // Hide join form and show home screen
       const joinFormSection = document.getElementById('join-form-section');
       const homeScreen = document.getElementById('home-screen');
+      const fixedJoinBtn = document.getElementById('fixedJoinBtn');
       if (joinFormSection) joinFormSection.classList.add('hidden');
       if (homeScreen) homeScreen.classList.remove('hidden');
+      if (fixedJoinBtn) fixedJoinBtn.style.display = 'block'; // Show button again
       history.replaceState(null, '', window.location.pathname);
     } catch (error) {
       alert('There was an error submitting your application. Please try again.');
@@ -84,16 +86,19 @@ function handleHash() {
   const hash = window.location.hash;
   const homeScreen = document.getElementById('home-screen');
   const joinFormSection = document.getElementById('join-form-section');
+  const fixedJoinBtn = document.getElementById('fixedJoinBtn');
   
   if (!homeScreen || !joinFormSection) return;
   
   if (hash === '#join') {
     homeScreen.classList.add('hidden');
     joinFormSection.classList.remove('hidden');
+    if (fixedJoinBtn) fixedJoinBtn.style.display = 'none'; // Hide button on join page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     homeScreen.classList.remove('hidden');
     joinFormSection.classList.add('hidden');
+    if (fixedJoinBtn) fixedJoinBtn.style.display = 'block'; // Show button on other pages
   }
 }
 
