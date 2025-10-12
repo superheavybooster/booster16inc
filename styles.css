@@ -95,6 +95,34 @@ body {
   animation: fadeInUp 0.6s ease-out;
 }
 
+/* Home screen background image */
+#home-screen {
+  background-image: url('https://imgur.com/1NTREJg.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Optional: Add a dark overlay to make text more readable */
+#home-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+#home-screen > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Animate main content containers */
 .max-w-3xl,
 .max-w-6xl {
@@ -226,6 +254,11 @@ a:hover {
   margin: 0 auto;
   padding: 20px;
   animation: fadeInUp 0.8s ease-out;
+}
+
+/* Hide Join button when on join page */
+#join-form-section:not(.hidden) ~ #fixedJoinBtn {
+  display: none;
 }
 
 .team-roles {
