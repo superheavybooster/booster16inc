@@ -1,0 +1,272 @@
+/* ====== Video Embed Ratio ====== */
+.ratio-16x9 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.ratio-16x9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ====== Fixed Join Button ====== */
+#fixedJoinBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4b5563;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+#fixedJoinBtn:hover {
+  transform: scale(1.05);
+  background-color: #6b7280;
+}
+
+/* ====== Rainbow Hover Animation ====== */
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+button:hover,
+#fixedJoinBtn:hover,
+a.px-6:hover {
+  background: linear-gradient(270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff) !important;
+  background-size: 400% 400% !important;
+  animation: rainbow 3s linear infinite !important;
+  color: white !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3) !important;
+  transform: scale(1.05) !important;
+  border: none !important;
+}
+
+/* ====== General Styling ====== */
+body {
+  background-color: #0b0b0b;
+  color: #e5e5e5;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* ====== Headings ====== */
+h1,
+h2,
+h3,
+h4 {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* ====== Buttons ====== */
+button {
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+  background-color: #4b5563;
+}
+
+/* ====== Cards ====== */
+.bg-gray-800\/40 {
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-gray-800\/40:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ====== Images ====== */
+img.rounded-lg {
+  transition: all 0.3s ease;
+}
+
+img.rounded-lg:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+/* ====== Timeline Dots ====== */
+.timeline-dot {
+  background-color: #ffffff;
+  border: 2px solid #4b5563;
+  transition: all 0.2s ease;
+}
+
+.timeline-dot:hover {
+  background-color: #60a5fa;
+  border-color: #60a5fa;
+  box-shadow: 0 0 10px #3b82f6;
+}
+
+/* ====== Sections ====== */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* ====== Update Section Headings ====== */
+#updates-section h4 {
+  color: #f9fafb;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+}
+
+/* ====== Timeline - Stop vertical line at last item ====== */
+ol.timeline li:last-child::before {
+  content: "";
+  height: 0;
+  background: none;
+}
+
+/* ====== Smooth transitions for showing/hiding ====== */
+.hidden {
+  display: none !important;
+}
+
+/* ====== Links ====== */
+a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* ====== Scrollbar ====== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* ====== Join Form Styling ====== */
+#join-form-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.team-roles {
+  background-color: #1f2937;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.team-roles h3 {
+  color: #60a5fa;
+  margin-top: 0;
+}
+
+.role {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #374151;
+  border-radius: 5px;
+}
+
+.role-title {
+  font-weight: bold;
+  color: #60a5fa;
+  margin-bottom: 5px;
+}
+
+#joinFormContainer {
+  background-color: #1f2937;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+#joinFormContainer h2 {
+  color: #60a5fa;
+  margin-top: 0;
+}
+
+#joinFormContainer label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#joinFormContainer input,
+#joinFormContainer textarea,
+#joinFormContainer select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #4b5563;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#joinFormContainer textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#joinFormContainer select {
+  cursor: pointer;
+}
+
+#joinFormContainer button[type="submit"] {
+  background-color: #4b5563;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+#joinFormContainer button[type="submit"]:hover {
+  background-color: #6b7280;
+}
+
+.required {
+  color: #60a5fa;
+}
