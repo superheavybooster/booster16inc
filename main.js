@@ -124,3 +124,15 @@ document.querySelectorAll('.mission-section, .detail-card, .update-card, .role-c
   el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
   observer.observe(el);
 });
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', e => {
+    if (link.href && !link.href.startsWith('#')) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location = link.href;
+      }, 500); // matches animation duration
+    }
+  });
+});
