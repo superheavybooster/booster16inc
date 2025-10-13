@@ -1,23 +1,3 @@
-// Page exit animation for navigation links
-document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
-  link.addEventListener('click', function(e) {
-    const href = this.getAttribute('href');
-    
-    // Only animate for internal navigation (not external links)
-    if (href && !href.startsWith('http') && !href.startsWith('#')) {
-      e.preventDefault();
-      
-      // Add exit animation class
-      document.body.classList.add('page-exit');
-      
-      // Navigate after animation completes
-      setTimeout(() => {
-        window.location.href = href;
-      }, 400); // Match animation duration
-    }
-  });
-});
-
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
